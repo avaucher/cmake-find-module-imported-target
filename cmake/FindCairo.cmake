@@ -5,7 +5,7 @@
 #  CAIRO_INCLUDE_DIRS - the Cairo include directories
 #  CAIRO_LIBRARIES - link these to use Cairo
 #
-# and the following imported targets::
+# and the following imported targets:
 #
 #  Cairo::Cairo - The Cairo library
 #

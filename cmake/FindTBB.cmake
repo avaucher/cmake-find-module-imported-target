@@ -3,6 +3,7 @@
 
 # Adapted from a version by Justus Calvin:
 # https://github.com/justusc/FindTBB/blob/master/FindTBB.cmake
+# Copyright (c) 2015 Justus Calvin
 
 #
 # FindTBB

@@ -58,6 +58,9 @@
 #                           <library>, where <library> may be tbb, tbb_debug,
 #                           tbbmalloc, tbbmalloc_debug, tbb_preview, or 
 #                           tbb_preview_debug.
+# and the following imported targets::
+#
+#   tbb::tbb                - The TBB library
 #
 # The following varibles should be used to build and link with TBB:
 #
@@ -72,8 +75,6 @@
 # * TBB_DEFINITIONS_DEBUG   - Definitions to use when compiling debug code that
 #                             uses TBB.
 #
-# This module will also create the "tbb" target that may be used when building
-# executables and libraries.
 
 include(FindPackageHandleStandardArgs)
 
@@ -256,19 +257,19 @@ if(NOT TBB_FOUND)
   ##################################
 
   if(NOT CMAKE_VERSION VERSION_LESS 3.0 AND TBB_FOUND)
-    add_library(tbb INTERFACE IMPORTED)
-    set_target_properties(tbb PROPERTIES
+    add_library(tbb::tbb INTERFACE IMPORTED)
+    set_target_properties(tbb::tbb PROPERTIES
           INTERFACE_INCLUDE_DIRECTORIES  ${TBB_INCLUDE_DIRS}
           INTERFACE_LINK_LIBRARIES       ${TBB_LIBRARIES})
     if(TBB_LIBRARIES_RELEASE AND TBB_LIBRARIES_DEBUG)
-      set_target_properties(tbb PROPERTIES
+      set_target_properties(tbb::tbb PROPERTIES
             INTERFACE_COMPILE_DEFINITIONS  "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:TBB_USE_DEBUG=1>"
             INTERFACE_LINK_LIBRARIES       "${TBB_LIBRARIES};$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:${TBB_LIBRARIES_DEBUG}>;$<$<OR:$<CONFIG:Release>,$<CONFIG:MinSizeRel>>:${TBB_LIBRARIES_RELEASE}>")
     elseif(TBB_LIBRARIES_RELEASE)
-      set_target_properties(tbb PROPERTIES
+      set_target_properties(tbb::tbb PROPERTIES
             INTERFACE_LINK_LIBRARIES       "${TBB_LIBRARIES};${TBB_LIBRARIES_RELEASE}")
     else()
-      set_target_properties(tbb PROPERTIES
+      set_target_properties(tbb::tbb PROPERTIES
             INTERFACE_COMPILE_DEFINITIONS  "${TBB_DEFINITIONS_DEBUG}"
             INTERFACE_LINK_LIBRARIES       "${TBB_LIBRARIES};${TBB_LIBRARIES_DEBUG}")
     endif()

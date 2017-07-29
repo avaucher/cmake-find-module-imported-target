@@ -83,12 +83,15 @@ IF (Cairo_FIND_VERSION)
     ENDIF ()
 ENDIF ()
 
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(Cairo
+                                  FOUND_VAR Cairo_FOUND
+                                  REQUIRED_VARS CAIRO_INCLUDE_DIRS CAIRO_LIBRARIES VERSION_OK
+                                  )
+
 if(Cairo_FOUND AND NOT TARGET Cairo::Cairo)
   add_library(Cairo::Cairo INTERFACE IMPORTED)
   set_target_properties(Cairo::Cairo PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES  ${CAIRO_INCLUDE_DIRS}
     INTERFACE_LINK_LIBRARIES       ${CAIRO_LIBRARIES})
 endif()
-
-INCLUDE(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(Cairo DEFAULT_MSG CAIRO_INCLUDE_DIRS CAIRO_LIBRARIES VERSION_OK)

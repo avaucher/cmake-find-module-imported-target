@@ -17,3 +17,10 @@ target_link_libraries(MyTarget PUBLIC XXX::XXX)
 ```
 
 In addition to be shorter than the previous version, a big advantage is that it makes `MyTarget` independent of the specific installation of `XXX` when installing `MyTarget` as a CMake package ([here](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#creating-packages) for details).
+
+## Available Find modules
+
+Many libraries already define imported targets and are not included in this project.
+
+Find modules:
+* [TBB](cmake/FindTBB.cmake)

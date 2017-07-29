@@ -1,5 +1,6 @@
 # Distributed under the MIT License
-# See accompanying LICENSE.txt for details.
+# See https://github.com/avaucher/cmake-find-module-imported-target/blob/master/LICENSE.txt for details.
+# Copyright (c) 2017 Alain Vaucher
 
 # Adapted from a version by Justus Calvin:
 # https://github.com/justusc/FindTBB/blob/master/FindTBB.cmake

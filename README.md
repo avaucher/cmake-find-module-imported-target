@@ -24,3 +24,4 @@ Many libraries already define imported targets and are not included in this proj
 
 Find modules:
 * [TBB](cmake/FindTBB.cmake)
+* [Cairo](cmake/FindCairo.cmake)

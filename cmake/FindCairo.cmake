@@ -5,7 +5,13 @@
 #  CAIRO_INCLUDE_DIRS - the Cairo include directories
 #  CAIRO_LIBRARIES - link these to use Cairo
 #
-# Copyright (C) 2012 Raphael Kubo da Costa <rakuco@webkit.org>
+# and the following imported targets::
+#
+#  Cairo::Cairo - The Cairo library
+#
+#
+# Original work Copyright (C) 2012 Raphael Kubo da Costa <rakuco@webkit.org>
+# Modified work Copyright (C) 2017 Alain Vaucher
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -76,6 +82,13 @@ IF (Cairo_FIND_VERSION)
         ENDIF ()
     ENDIF ()
 ENDIF ()
+
+if(Cairo_FOUND AND NOT TARGET Cairo::Cairo)
+  add_library(Cairo::Cairo INTERFACE IMPORTED)
+  set_target_properties(Cairo::Cairo PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES  ${CAIRO_INCLUDE_DIRS}
+    INTERFACE_LINK_LIBRARIES       ${CAIRO_LIBRARIES})
+endif()
 
 INCLUDE(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(Cairo DEFAULT_MSG CAIRO_INCLUDE_DIRS CAIRO_LIBRARIES VERSION_OK)

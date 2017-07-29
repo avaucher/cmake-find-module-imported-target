@@ -60,7 +60,7 @@
 #                           tbbmalloc, tbbmalloc_debug, tbb_preview, or 
 #                           tbb_preview_debug.
 #
-# and the following imported targets::
+# and the following imported targets:
 #
 #   tbb::tbb                - The TBB library
 #
